@@ -8,12 +8,21 @@ This application will iteratively print the gameboard to the player, ask the pla
 **I want my A.I. on max difficulty to beat me, easily.**
 
 Example Board Layout:
+   
    a b c d e f g h
+
 8 r n b q k b n r   (Black)
+
 7 p p p p p p p p
+
 6 . . . . . . . .   (Empty)
+
 5 . . . . . . . .
+
 4 . . . . . . . .
+
 3 . . . . . . . .
+
 2 P P P P P P P P
+
 1 R N B Q K B N R   (White)
