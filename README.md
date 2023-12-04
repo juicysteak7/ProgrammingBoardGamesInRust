@@ -7,6 +7,8 @@ Professor Bart Massey
 CS 410: Rust Programming
 
 # Description
+For licensing information please look at the LICENSE file at the root of the project.
+
 This repo is for my class projects of both Rust and A.I.
 
 A.I. has proven to be a good test of algorithm knowledge, and data structure knowledge. 
