@@ -1,44 +1,44 @@
 use chess::{Board, ChessMove, Color, File, Game, GameResult, MoveGen, Piece, Rank, Square, EMPTY};
 
 
-/// Represents a chess game.
+/// Represents a MyChess game.
 ///
-/// This struct encapsulates the state of a chess game, including the chess board,
+/// This struct encapsulates the state of a MyChess game, including the MyChess board,
 /// the current player's color, and the game rules.
-pub struct Chess {
+pub struct MyChess {
     pub board: Board,
     pub color: Color,
     pub game: Game,
 }
 
-/// Creates a new `Chess` instance with default settings.
+/// Creates a new `MyChess` instance with default settings.
 ///
-/// This function is used to create a new chess game with the default starting position
+/// This function is used to create a new MyChess game with the default starting position
 /// and the starting player set to `Color::White`.
-impl Default for Chess {
+impl Default for MyChess {
     fn default() -> Self {
         Self::new()
     }
 }
 
-/// Logic for `Chess` struct
-impl Chess {
-    /// Creates a new instance of the `Chess` struct.
+/// Logic for `MyChess` struct
+impl MyChess {
+    /// Creates a new instance of the `MyChess` struct.
     ///
-    /// This function initializes a new chess game by creating a new instance of the `Game`
-    /// struct and extracting the initial chess board, current player's color, and game state.
+    /// This function initializes a new MyChess game by creating a new instance of the `Game`
+    /// struct and extracting the initial MyChess board, current player's color, and game state.
     pub fn new() -> Self {
         let game = Game::new();
-        Chess {
+        MyChess {
             board: game.current_position(),
             color: game.side_to_move(),
             game,
         }
     }
 
-    /// Prints the current state of the chess board along with an evaluation score.
+    /// Prints the current state of the MyChess board along with an evaluation score.
     ///
-    /// This method prints the ASCII representation of the current chess board and includes
+    /// This method prints the ASCII representation of the current MyChess board and includes
     /// an evaluation score based on the current game state. The evaluation score can provide
     /// insights into the relative strength of the position for the player whose turn it is.
     pub fn print_board(&self) {
@@ -49,10 +49,10 @@ impl Chess {
         );
     }
 
-    /// Starts a new chess game, resetting the board and game state.
+    /// Starts a new MyChess game, resetting the board and game state.
     ///
-    /// This method creates a new instance of the `Game` struct, initializes a new chess game,
-    /// and resets the internal state of the `Chess` struct with the initial chess board and
+    /// This method creates a new instance of the `Game` struct, initializes a new MyChess game,
+    /// and resets the internal state of the `MyChess` struct with the initial MyChess board and
     /// starting player's color. The new `Game` instance is returned for further interactions.
     pub fn new_game(&mut self) -> Game {
         let game = Game::new();
@@ -61,58 +61,58 @@ impl Chess {
         game
     }
 
-    /// Makes a chess move, updating the game state and current board.
+    /// Makes a MyChess move, updating the game state and current board.
     ///
-    /// This method applies the specified chess move to the current game state, updating both
-    /// the internal `Game` state and the current chess board. After making the move, the method
+    /// This method applies the specified MyChess move to the current game state, updating both
+    /// the internal `Game` state and the current MyChess board. After making the move, the method
     /// also updates the current player's color based on the updated game state.
     ///
     /// # Arguments
     ///
-    /// * `mov` - The chess move to be made.
+    /// * `mov` - The MyChess move to be made.
     pub fn make_move(&mut self, mov: ChessMove) {
         self.game.make_move(mov);
         self.board = self.game.current_position();
         self.color = self.game.side_to_move();
     }
 
-    /// Makes a chess move in a new game instance, updating the game state.
+    /// Makes a MyChess move in a new game instance, updating the game state.
     ///
-    /// This function takes a `Game` instance, applies the specified chess move to it, and returns
+    /// This function takes a `Game` instance, applies the specified MyChess move to it, and returns
     /// a new `Game` instance with the updated state. The original `Game` instance remains unchanged.
     ///
     /// # Arguments
     ///
     /// * `game` - The original game instance.
-    /// * `mov` - The chess move to be made.
+    /// * `mov` - The MyChess move to be made.
     ///
     /// # Returns
     ///
-    /// A new `Game` instance with the updated state after applying the chess move.
+    /// A new `Game` instance with the updated state after applying the MyChess move.
     pub fn make_move_r(mut game: Game, mov: ChessMove) -> Game {
         game.make_move(mov);
         game
     }
 
-    /// Returns an iterator over legal chess moves for the current position.
+    /// Returns an iterator over legal MyChess moves for the current position.
     ///
-    /// This method creates and returns a `MoveGen` iterator over legal chess moves for the
-    /// current position on the chess board. The iterator provides a sequence of valid moves
+    /// This method creates and returns a `MoveGen` iterator over legal MyChess moves for the
+    /// current position on the MyChess board. The iterator provides a sequence of valid moves
     /// that can be made in the current game state.
     ///
     /// # Returns
     ///
-    /// A `MoveGen` iterator providing legal chess moves for the current position.
+    /// A `MoveGen` iterator providing legal MyChess moves for the current position.
     pub fn move_iterator(&self) -> MoveGen {
         MoveGen::new_legal(&self.board)
     }
 
-    /// Makes a chess move using an AI strategy, updating the game state and current board.
+    /// Makes a MyChess move using an AI strategy, updating the game state and current board.
     ///
-    /// This method generates and evaluates possible chess moves using a simple AI strategy,
+    /// This method generates and evaluates possible MyChess moves using a simple AI strategy,
     /// considering capturing moves first and then non-capturing moves. The AI performs a
     /// limited-depth search to evaluate potential future positions and chooses the move
-    /// with the highest evaluation score. The internal state of the `Chess` struct is then
+    /// with the highest evaluation score. The internal state of the `MyChess` struct is then
     /// updated with the chosen move.
 
     pub fn make_ai_move(&mut self) {
@@ -149,9 +149,9 @@ impl Chess {
         }
     }
 
-    /// Performs a recursive evaluation of a chess move using a minimax algorithm with alpha-beta pruning.
+    /// Performs a recursive evaluation of a MyChess move using a minimax algorithm with alpha-beta pruning.
     ///
-    /// This function evaluates the potential outcome of a chess move by recursively exploring possible future
+    /// This function evaluates the potential outcome of a MyChess move by recursively exploring possible future
     /// positions up to a specified depth using the minimax algorithm with alpha-beta pruning. It considers both
     /// capturing and non-capturing moves and returns an evaluation score for the move.
     ///
@@ -164,7 +164,7 @@ impl Chess {
     ///
     /// # Returns
     ///
-    /// An evaluation score for the specified chess move.
+    /// An evaluation score for the specified MyChess move.
     pub fn make_ai_move_r(game: &Game, depth: u8, mut a: i32, b: i32) -> i32 {
         let mut result1: i32 = i32::MIN + 1;
         let mut result: i32;
@@ -212,15 +212,15 @@ impl Chess {
         result1
     }
 
-    /// Evaluates the current chess board position by calculating the material advantage for a specified color.
+    /// Evaluates the current MyChess board position by calculating the material advantage for a specified color.
     ///
     /// This function calculates the material advantage for a given color based on the piece values on the
-    /// chess board. It considers the values of pawns, knights, bishops, rooks, and queens for both players,
+    /// MyChess board. It considers the values of pawns, knights, bishops, rooks, and queens for both players,
     /// and returns a numerical score representing the material advantage for the specified color.
     ///
     /// # Arguments
     ///
-    /// * `board` - The current chess board position.
+    /// * `board` - The current MyChess board position.
     /// * `color` - The color for which the material advantage is calculated.
     ///
     /// # Returns
@@ -248,19 +248,19 @@ impl Chess {
         black_pieces - white_pieces
     }
 
-    /// Retrieves the numerical value associated with a chess piece.
+    /// Retrieves the numerical value associated with a MyChess piece.
     ///
-    /// This function returns the numerical value associated with a chess piece based on traditional piece values
+    /// This function returns the numerical value associated with a MyChess piece based on traditional piece values
     /// used for evaluation. The values assigned are: pawn (1), knight (3), bishop (3), rook (5), queen (9), and king (0).
     /// You may want to adjust the value for the king based on the game state or specific evaluation criteria.
     ///
     /// # Arguments
     ///
-    /// * `piece` - The chess piece for which the numerical value is retrieved.
+    /// * `piece` - The MyChess piece for which the numerical value is retrieved.
     ///
     /// # Returns
     ///
-    /// The numerical value associated with the specified chess piece.
+    /// The numerical value associated with the specified MyChess piece.
     ///
     fn piece_value(piece: &Piece) -> i32 {
         match piece {
@@ -273,9 +273,9 @@ impl Chess {
         }
     }
 
-    /// Checks if the current chess game has reached a game-over state.
+    /// Checks if the current MyChess game has reached a game-over state.
     ///
-    /// This function checks whether the current chess game has reached a game-over state, including scenarios
+    /// This function checks whether the current MyChess game has reached a game-over state, including scenarios
     /// such as checkmate or stalemate. It queries the game result, and if the result is checkmate (for either
     /// white or black) or stalemate, it returns true, indicating that the game is over.
     ///

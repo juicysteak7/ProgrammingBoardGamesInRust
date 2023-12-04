@@ -1,10 +1,10 @@
 use chess::ChessMove;
 use std::io;
 use std::str::FromStr;
-use Chess::Chess;
+use my_chess::MyChess;
 
 fn main() {
-    let mut chess = Chess::new();
+    let mut chess = MyChess::new();
     chess.print_board();
     while !chess.is_game_over() {
         // Read user input
