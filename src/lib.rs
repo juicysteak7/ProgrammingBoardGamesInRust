@@ -295,9 +295,3 @@ impl MyChess {
         game_over
     }
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-}
