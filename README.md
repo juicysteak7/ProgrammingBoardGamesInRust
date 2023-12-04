@@ -59,6 +59,12 @@ It will promt you for your move, generate an A.I. move, print the board, then lo
 
 All in all I enjoyed this project, I spent a lot of time on my other A.I. project and wish I had more time to fine tune this A.I. 
 
+Testing this project involved a lot of by hand testing. 
+
+I struggled to develop meaningful tests because I leverage an outside crate so frequently.
+
+This is something I can improve on from this project.
+
 It might be a project I return to.
 
 If I do return to it, I would implement a tansposition table so the program can store a look up positions it has visited.
