@@ -70,10 +70,11 @@ impl MyChess {
     /// # Arguments
     ///
     /// * `mov` - The MyChess move to be made.
-    pub fn make_move(&mut self, mov: ChessMove) {
-        self.game.make_move(mov);
+    pub fn make_move(&mut self, mov: ChessMove) -> bool {
+        let result = self.game.make_move(mov);
         self.board = self.game.current_position();
         self.color = self.game.side_to_move();
+        result
     }
 
     /// Makes a MyChess move in a new game instance, updating the game state.

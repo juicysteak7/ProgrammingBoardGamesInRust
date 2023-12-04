@@ -18,7 +18,11 @@ fn main() {
         match ChessMove::from_str(input.trim()) {
             Ok(chess_move) => {
                 // Apply the move to the board
-                chess.make_move(chess_move);
+                if !chess.make_move(chess_move) {
+                    println!("Invalid move. Please enter a move in UCI format (e.g., e2e4).");
+                    chess.print_board();
+                    continue;
+                }
                 chess.print_board();
             }
             Err(_) => {
