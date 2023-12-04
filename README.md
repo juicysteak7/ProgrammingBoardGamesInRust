@@ -59,6 +59,6 @@ All in all I enjoyed this project, I spent a lot of time on my other A.I. projec
 
 It might be a project I return to.
 
-If I do return to it, I would implement a tanspoition table so the program can store a look up positions it has visited.
+If I do return to it, I would implement a tansposition table so the program can store a look up positions it has visited.
 
 I might then write that transposition table to a file to ingest when the program starts again so it can save positions between invokations.
