@@ -13,7 +13,23 @@ A.I. has proven to be a good test of algorithm knowledge, and data structure kno
 
 To quote Bart, Rust is all about good data design.
 
-This application will iteratively print the gameboard to the player, ask the player for thier move, choose a move, until there is either a checkmate, or a stalemate. 
+This application will start the game loop of: 
+
+    print the gameboard to the player, 
+
+    ask the player for thier move, 
+
+    apply move,
+
+    print the gameboard to the player,
+
+    choose a A.I. move, 
+
+    apply move,
+
+    print the gameboard to the player,
+
+    until there is either a checkmate, or a stalemate. 
 
 I want to add scalable difficulty when you are playing against the A.I. 
 
